@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AudioManager : Singleton<AudioManager>
+public class AudioManager : SingletonDontDestroy<AudioManager>
 {
     [Header("--------------AudioSource--------------")]
     [SerializeField] private AudioSource musicSource;
