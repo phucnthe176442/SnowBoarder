@@ -1,47 +1,17 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Audio;
+using snow_boarder;
 
 public class VolumeSetting : MonoBehaviour
 {
-    [SerializeField] private AudioMixer myMixer;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider sfxSlider;
 
-    private void Start()
+    public void SetMusicVolume(float value)
     {
-        if (PlayerPrefs.HasKey("musicVolume"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-            SetSFXVolume();
-        }
+        AudioManager.Instance.MusicVolume = value;
     }
 
-    public void SetMusicVolume()
+    public void SetSFXVolume(float value)
     {
-        float volumeMusic = musicSlider.value;
-        myMixer.SetFloat("music", Mathf.Log10(volumeMusic) * 20);
-        PlayerPrefs.SetFloat("musicVolume", volumeMusic);
-    }
-
-    public void SetSFXVolume()
-    {
-        float volumeSFX = sfxSlider.value;
-        myMixer.SetFloat("sfx", Mathf.Log10(volumeSFX) * 20);
-        PlayerPrefs.SetFloat("sfxVolume", volumeSFX);
-    }
-
-    private void LoadVolume()
-    {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-
-        SetMusicVolume();
-        SetSFXVolume();
+        AudioManager.Instance.SFXVolume = value;
     }
 }
 

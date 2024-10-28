@@ -24,7 +24,7 @@ namespace snow_boarder
         {
             LoadingView.Instance.LoadScene(new LoadSceneData()
             {
-                sceneName = Constant.LEVEL_SCENE,
+                sceneName = Constant.GAMEPLAY_SCENE,
                 minLoadTime = 1f,
                 launchCondition = () => true,
                 onCompleted = () => GameManager.Instance.Setup(difficult),
