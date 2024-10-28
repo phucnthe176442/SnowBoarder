@@ -4,9 +4,18 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using snow_boarder.Core;
 
-namespace snow_boarder
+namespace snow_boarder.UI
 {
+    public class LoadSceneData
+    {
+        public string sceneName;
+        public float minLoadTime;
+        public Func<bool> launchCondition;
+        public Action onCompleted;
+    }
+
     public class LoadingView : SingletonDontDestroy<LoadingView>
     {
         [SerializeField] private RectTransform[] texts;
@@ -19,14 +28,6 @@ namespace snow_boarder
         private int _textIndex;
         private float _lastTimeChangeText;
         private WaitForSeconds _delayBeforeLoad;
-
-        public class LoadSceneData
-        {
-            public string sceneName;
-            public float minLoadTime;
-            public Func<bool> launchCondition;
-            public Action onCompleted;
-        }
 
         private void Start()
         {
@@ -47,7 +48,7 @@ namespace snow_boarder
 
         private IEnumerator IeLoadScene(LoadSceneData data)
         {
-            if(_loading) yield break;
+            if (_loading) yield break;
             _loading = true;
             skipButtonGo.SetActive(true);
             viewGo.gameObject.SetActive(true);
@@ -60,7 +61,7 @@ namespace snow_boarder
             while (t < data.minLoadTime || ao.progress < 0.9f)
             {
                 if (!_loading) t = data.minLoadTime - Time.unscaledDeltaTime;
-                if(Time.time - _lastTimeChangeText >= 0.35f)
+                if (Time.time - _lastTimeChangeText >= 0.35f)
                 {
                     _lastTimeChangeText = Time.time;
                     texts[_textIndex].gameObject.SetActive(false);

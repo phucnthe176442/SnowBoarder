@@ -1,20 +1,34 @@
+using snow_boarder.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LevelOptions : MonoBehaviour
+namespace snow_boarder
 {
-    public void OnSelectEasy()
+    public class LevelOptions : MonoBehaviour
     {
-        SceneManager.LoadScene(Constant.LEVEL_EASY_SCENE);
-    }
+        public void OnSelectEasy()
+        {
+            OnSelected(ELevelDifficult.Easy);
+        }
 
-    public void OnSelectMedium()
-    {
-        SceneManager.LoadScene(Constant.LEVEL_MEDIUM_SCENE);
-    }
+        public void OnSelectMedium()
+        {
+            OnSelected(ELevelDifficult.Medium);
+        }
 
-    public void OnSelectHard()
-    {
-        SceneManager.LoadScene(Constant.LEVEL_HARD_SCENE);
+        public void OnSelectHard()
+        {
+            OnSelected(ELevelDifficult.Hard);
+        }
+
+        private void OnSelected(ELevelDifficult difficult)
+        {
+            LoadingView.Instance.LoadScene(new LoadSceneData()
+            {
+                sceneName = Constant.LEVEL_SCENE,
+                minLoadTime = 1f,
+                launchCondition = () => true,
+                onCompleted = () => GameManager.Instance.Setup(difficult),
+            });
+        }
     }
 }

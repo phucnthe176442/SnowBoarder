@@ -1,30 +1,35 @@
+using snow_boarder.Core;
 using UnityEngine;
 
-public class AudioManager : SingletonDontDestroy<AudioManager>
+namespace snow_boarder
 {
-    [Header("--------------AudioSource--------------")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource SFXSource;
-
-    [Header("--------------AudioClip--------------")]
-    public AudioClip background;
-    public AudioClip clickButton;
-    public AudioClip playerDied;
-    public AudioClip playerJump;
-    public AudioClip pickItem;
-
-    private float _lastTimePlayOneShot;
-
-    public void Start()
+    public class AudioManager : SingletonDontDestroy<AudioManager>
     {
-        musicSource.clip = background;
-        musicSource.Play();
-    }
+        [Header("--------------AudioSource--------------")]
+        [SerializeField] private AudioSource musicSource;
+        [SerializeField] private AudioSource SFXSource;
 
-    public void PlaySFX(AudioClip clip)
-    {
-        if (Time.time - _lastTimePlayOneShot < 0.1f) return;
-        _lastTimePlayOneShot = Time.time;
-        SFXSource.PlayOneShot(clip);
+        [Header("--------------AudioClip--------------"), Space]
+        public AudioClip background;
+
+        private float _lastTimePlayOneShot;
+
+        public void Start()
+        {
+            PlayMusic(background);
+        }
+
+        public void PlayMusic(AudioClip music)
+        {
+            musicSource.clip = music;
+            musicSource.Play();
+        }
+
+        public void PlaySFX(AudioClip clip)
+        {
+            if (Time.time - _lastTimePlayOneShot < 0.1f) return;
+            _lastTimePlayOneShot = Time.time;
+            SFXSource.PlayOneShot(clip);
+        }
     }
 }

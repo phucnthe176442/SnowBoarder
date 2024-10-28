@@ -304,8 +304,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 6596252322543793286}
   SFXSource: {fileID: 6185480682786346001}
-  background: {fileID: 8300000, guid: 3be6115fd6f857849aeea3184df8d73c, type: 3}
-  clickButton: {fileID: 8300000, guid: 07d67211862fe314eb989b95feaf9d7b, type: 3}
-  playerDied: {fileID: 0}
-  playerJump: {fileID: 0}
-  pickItem: {fileID: 0}
+  background: {fileID: 8300000, guid: 02c7dfd9f2694634f89af71e8723abb6, type: 3}

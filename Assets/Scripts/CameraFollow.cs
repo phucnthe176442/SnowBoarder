@@ -1,17 +1,25 @@
 ﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+namespace snow_boarder
 {
-    private Vector3 offset = new Vector3(0f, 0f, -10f);
-    private float smoothTime = 0.3f;
-    private Vector3 velocity = Vector3.zero;
-
-    [SerializeField] private Transform target;
-
-    private void LateUpdate()
+    public class CameraFollow : MonoBehaviour
     {
-        if (target == null) return;
-        Vector3 targetPosition = target.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        [SerializeField] private Transform target;
+
+        private const float SMOOTH_TIME = 0.3f;
+        protected Vector3 velocity = Vector3.zero;
+        private Vector3 _targetPosition = Vector3.zero;
+
+        private void Update()
+        {
+            if (target == null) return;
+            _targetPosition = target.position;
+            _targetPosition.z = -1f;
+        }
+
+        private void LateUpdate()
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref velocity, SMOOTH_TIME);
+        }
     }
 }

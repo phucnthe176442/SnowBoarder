@@ -20,6 +20,7 @@ public class VolumeSetting : MonoBehaviour
             SetSFXVolume();
         }
     }
+
     public void SetMusicVolume()
     {
         float volumeMusic = musicSlider.value;
