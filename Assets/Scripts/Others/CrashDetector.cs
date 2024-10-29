@@ -1,40 +1,40 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace snow_boarder
 {
     public class CrashDetector : MonoBehaviour
     {
-
-        [SerializeField] private float delayTime = 1f;
-        [SerializeField] ParticleSystem crashEffect;
+        [SerializeField] private Trigger trigger;
+        [SerializeField] private ParticleSystem crashEffect;
+        [SerializeField] private AudioClip crashSFX;
 
         private bool _hasCrashed = false;
+        private PlayerController _controller;
 
-        [SerializeField] AudioClip crashSFX;
-        private void OnTriggerEnter2D(Collider2D other)
+        private void Awake()
         {
-            if (other.tag == "Ground" && !_hasCrashed)
-            {
-                var player = GameObject.FindGameObjectWithTag("Player");
-                var controller = player.GetComponent<PlayerController>();
-
-                var oldScore = PlayerPrefs.GetFloat("highest");
-                var newScore = controller.RotationTime;
-
-                if (newScore > oldScore) PlayerPrefs.SetFloat("highest", newScore);
-                _hasCrashed = true;
-                controller.DisableControls();
-                Debug.Log("Ouch!");
-                crashEffect.Play();
-                AudioManager.Instance.PlaySFX(crashSFX);
-                Invoke(nameof(ReloadScene), delayTime);
-            }
+            _controller = GetComponent<PlayerController>();
         }
 
-        private void ReloadScene()
+        private void OnEnable()
         {
-            SceneManager.LoadScene(0);
+            trigger.OnTriggerEnterEvent += OnTriggerEnterEvnt;
+        }
+
+        private void OnDisable()
+        {
+            trigger.OnTriggerEnterEvent -= OnTriggerEnterEvnt;
+        }
+
+        private void OnTriggerEnterEvnt(GameObject @object)
+        {
+            if (_hasCrashed) return;
+            Debug.Log("Crashed!!!");
+            _hasCrashed = true;
+            _controller.DisableControls();
+            crashEffect.Play();
+            AudioManager.Instance.PlaySFX(crashSFX);
+            GameManager.Instance.EndGame();
         }
     }
 }

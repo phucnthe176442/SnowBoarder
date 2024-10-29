@@ -9,6 +9,7 @@ namespace snow_boarder
 
         private void OnEnable()
         {
+            OnChanged(GameManager.Instance.HighestScore);
             GameManager.Instance.OnChangedHighestScore += OnChanged;
         }
 

@@ -1,10 +1,13 @@
 using snow_boarder.UI;
+using System;
 using UnityEngine;
 
 namespace snow_boarder
 {
     public class LevelOptions : MonoBehaviour
     {
+        public event Action OnLoadSceneEvent;
+
         public void OnSelectEasy()
         {
             OnSelected(ELevelDifficult.Easy);
@@ -22,6 +25,7 @@ namespace snow_boarder
 
         private void OnSelected(ELevelDifficult difficult)
         {
+            OnLoadSceneEvent?.Invoke();
             LoadingView.Instance.LoadScene(new LoadSceneData()
             {
                 sceneName = Constant.GAMEPLAY_SCENE,

@@ -14,8 +14,11 @@ namespace snow_boarder
 
     public class GameManager : SingletonDontDestroy<GameManager>
     {
+        [SerializeField] private PlayerController playerPrefab;
         [SerializeField] private LevelBinding[] configs;
 
+        public event Action OnGameEnd;
+        public Transform CameraTarget { get; private set; }
         public event Action<float> OnChangedHighestScore;
         public float HighestScore
         {
@@ -43,8 +46,14 @@ namespace snow_boarder
         {
             var config = configs.First(c => c.difficult == difficult);
             var ground = Instantiate(config.groundPrefab);
-            ground.transform.position = Vector3.zero;
-            Debug.LogError("???");
+            var player = Instantiate(playerPrefab);
+            player.transform.position = Vector3.zero;
+            CameraTarget = player.transform;
+        }
+
+        public void EndGame()
+        {
+            OnGameEnd?.Invoke();
         }
     }
 

@@ -22,7 +22,6 @@ namespace snow_boarder.UI
         [SerializeField] private float introDelay = 22f;
         [SerializeField] private GameObject viewGo;
         [SerializeField] private Image progress;
-        [SerializeField] private GameObject skipButtonGo;
 
         private bool _loading;
         private int _textIndex;
@@ -50,7 +49,6 @@ namespace snow_boarder.UI
         {
             if (_loading) yield break;
             _loading = true;
-            skipButtonGo.SetActive(true);
             viewGo.gameObject.SetActive(true);
 
             var ao = SceneManager.LoadSceneAsync(data.sceneName, LoadSceneMode.Single);
@@ -81,17 +79,12 @@ namespace snow_boarder.UI
                 yield return new WaitUntil(data.launchCondition);
             }
 
-            skipButtonGo.SetActive(false);
             yield return _delayBeforeLoad;
+            ao.allowSceneActivation = true;
+            yield return null;
             _loading = false;
             data.onCompleted?.Invoke();
-            ao.allowSceneActivation = true;
             viewGo.gameObject.SetActive(false);
-        }
-
-        public void Skip()
-        {
-            _loading = false;
         }
 
         private void Update()
