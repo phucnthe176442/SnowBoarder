@@ -16,9 +16,9 @@ namespace snow_boarder.UI
             levelOptions.OnLoadSceneEvent -= OnSeledtedLevel; 
         }
 
-        private void OnSeledtedLevel()
+        private void OnSeledtedLevel(ELevelDifficult diff)
         {
-            Controller.gameObject.SetActive(false);
+            Controller.Show<ViewSelectDifficult>(true, ViewControllerBase.EShowAction.DoNothing, diff);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace snow_boarder
 {
     public class LevelOptions : MonoBehaviour
     {
-        public event Action OnLoadSceneEvent;
+        public event Action<ELevelDifficult> OnLoadSceneEvent;
 
         public void OnSelectEasy()
         {
@@ -25,14 +25,7 @@ namespace snow_boarder
 
         private void OnSelected(ELevelDifficult difficult)
         {
-            OnLoadSceneEvent?.Invoke();
-            LoadingView.Instance.LoadScene(new LoadSceneData()
-            {
-                sceneName = Constant.GAMEPLAY_SCENE,
-                minLoadTime = 1f,
-                launchCondition = () => true,
-                onCompleted = () => GameManager.Instance.Setup(difficult),
-            });
+            OnLoadSceneEvent?.Invoke(difficult);
         }
     }
 }

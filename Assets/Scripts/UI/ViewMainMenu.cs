@@ -6,7 +6,7 @@ namespace snow_boarder.UI
     {
         public void OnClickGuide() => Controller.Show<ViewGuide>(true);
 
-        public void OnClickPlay() => Controller.Show<ViewSelectLevels>(true);
+        public void OnClickPlay() => Controller.Show<ViewSelectDifficult>(true);
 
         public void OnClickSettings() => Controller.Show<ViewSettings>(true);
 

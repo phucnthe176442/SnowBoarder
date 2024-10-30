@@ -54,31 +54,18 @@ namespace snow_boarder
 
         void RespondToBoost()
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                surfaceEffector2D.speed = boostSpeed;
-            }
+            if (Input.GetKey(KeyCode.W)) surfaceEffector2D.speed = boostSpeed;
         }
+
+        private float _lastTimeJump;
 
         private void RespondToJump()
         {
-            if (IsTouchingGroundLayer())
-            {
-                coyoteTimeCounter = coyoteTime;
-            }
-            else
-            {
-                coyoteTimeCounter -= Time.deltaTime;
-            }
+            if (IsTouchingGroundLayer()) coyoteTimeCounter = coyoteTime;
+            else coyoteTimeCounter -= Time.deltaTime;
 
-            if (Input.GetKey(KeyCode.Space))
-            {
-                jumpBufferCounter = jumpBufferTime;
-            }
-            else
-            {
-                jumpBufferCounter -= Time.deltaTime;
-            }
+            if (Input.GetKeyDown(KeyCode.Space)) jumpBufferCounter = jumpBufferTime;
+            else jumpBufferCounter -= Time.deltaTime;
 
             if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !isJumping)
             {
@@ -99,12 +86,12 @@ namespace snow_boarder
             if (Input.GetKey(KeyCode.A))
             {
                 rb2d.AddTorque(torqueAmount);
-                GameManager.Instance.Score += Time.deltaTime; // Increment the rotation time
+                GameManager.Instance.Score += Time.deltaTime; 
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 rb2d.AddTorque(-torqueAmount);
-                GameManager.Instance.Score += Time.deltaTime; // Increment the rotation time
+                GameManager.Instance.Score += Time.deltaTime; 
             }
         }
         bool IsTouchingGroundLayer()

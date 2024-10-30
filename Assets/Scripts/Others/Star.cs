@@ -10,6 +10,7 @@ namespace snow_boarder
         private void OnTriggerEnter2D(Collider2D collision)
         {
             GameManager.Instance.Score += value;
+            GameManager.Instance.Star += value;
             AudioManager.Instance.PlaySFX(sfx);
             Destroy(gameObject);
         }

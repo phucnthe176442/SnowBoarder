@@ -9,6 +9,7 @@ namespace snow_boarder
     public class LevelBinding
     {
         public ELevelDifficult difficult;
+        public int level;
         public GameObject groundPrefab;
     }
 
@@ -41,9 +42,22 @@ namespace snow_boarder
                 OnChangedScore?.Invoke(value);
             }
         }
-
-        public void Setup(ELevelDifficult difficult)
+        private float _star;
+        public event Action<float> OnChangedStar;
+        public float Star
         {
+            get => _star;
+            set
+            {
+                _star = value;
+                OnChangedStar?.Invoke(value);
+            }
+        }
+
+        public void Setup(ELevelDifficult difficult, int level)
+        {
+            Star = 0;
+            Score = 0;
             var config = configs.First(c => c.difficult == difficult);
             var ground = Instantiate(config.groundPrefab);
             var player = Instantiate(playerPrefab);

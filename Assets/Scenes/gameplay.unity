@@ -435,6 +435,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 837205100}
+    - target: {fileID: 2445942961820515768, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445942961820515768, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445942961820515768, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445942961820515768, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2595971269256683093, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -459,6 +475,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 837205100}
+    - target: {fileID: 4635042681710492570, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635042681710492570, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635042681710492570, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635042681710492570, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6707275466130856029, guid: f23116f8ff4793743a8eea91029c3a6e, type: 3}
       propertyPath: m_Name
       value: GameplayUI
