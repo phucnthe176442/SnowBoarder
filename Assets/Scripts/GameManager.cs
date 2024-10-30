@@ -55,6 +55,11 @@ namespace snow_boarder
         {
             OnGameEnd?.Invoke();
         }
+
+        internal void OnWin()
+        {
+
+        }
     }
 
     public enum ELevelDifficult

@@ -59,7 +59,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -574,6 +574,22 @@ PrefabInstance:
     - target: {fileID: 4333175859480190054, guid: b3c0f7784dd6a59409e8d62b380e293c, type: 3}
       propertyPath: m_Name
       value: PauseBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334924838568105399, guid: b3c0f7784dd6a59409e8d62b380e293c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334924838568105399, guid: b3c0f7784dd6a59409e8d62b380e293c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 501539278902635728}
+    - target: {fileID: 7334924838568105399, guid: b3c0f7784dd6a59409e8d62b380e293c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334924838568105399, guid: b3c0f7784dd6a59409e8d62b380e293c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: snow_boarder.UI.ViewGameplay, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

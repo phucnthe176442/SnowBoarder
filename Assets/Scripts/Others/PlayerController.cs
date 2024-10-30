@@ -99,15 +99,13 @@ namespace snow_boarder
             if (Input.GetKey(KeyCode.A))
             {
                 rb2d.AddTorque(torqueAmount);
-                rotationTime += Time.deltaTime; // Increment the rotation time
+                GameManager.Instance.Score += Time.deltaTime; // Increment the rotation time
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 rb2d.AddTorque(-torqueAmount);
-                rotationTime += Time.deltaTime; // Increment the rotation time
+                GameManager.Instance.Score += Time.deltaTime; // Increment the rotation time
             }
-
-            GameManager.Instance.Score = rotationTime;
         }
         bool IsTouchingGroundLayer()
         {

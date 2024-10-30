@@ -8,18 +8,16 @@ namespace snow_boarder.UI
 
         private void OnEnable()
         {
-            levelOptions.OnLoadSceneEvent += Close;
+            levelOptions.OnLoadSceneEvent += OnSeledtedLevel;
         }
 
         private void OnDisable()
         {
-            levelOptions.OnLoadSceneEvent -= Close; 
+            levelOptions.OnLoadSceneEvent -= OnSeledtedLevel; 
         }
 
-        public override void Close()
+        private void OnSeledtedLevel()
         {
-            base.Close();
-
             Controller.gameObject.SetActive(false);
         }
     }
